@@ -5,10 +5,12 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Service;
 
 import com.manse.board.dao.BoardDAO;
 
-public class BoardServiceImpl implements BoardDAO {
+@Service
+public class BoardServiceImpl implements BoardService {
 	
 	@Inject
 	private BoardDAO dao;
