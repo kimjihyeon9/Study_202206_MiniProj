@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
 import com.manse.board.dao.BoardDAO;
+import com.manse.board.domain.BoardVO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -15,9 +16,17 @@ public class BoardServiceImpl implements BoardService {
 	@Inject
 	private BoardDAO dao;
 
+	// 게시물 목록
 	public List list() throws Exception {
 		
 		return dao.list();
+	}
+	
+	// 게시물 작성
+	@Override
+	public void write(BoardVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.write(vo);
 	}
 
 }

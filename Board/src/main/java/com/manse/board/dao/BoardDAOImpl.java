@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.manse.board.domain.BoardVO;
+
 @Repository
 public class BoardDAOImpl implements BoardDAO {
 	
@@ -21,6 +23,13 @@ public class BoardDAOImpl implements BoardDAO {
 	public List list() throws Exception {
 		
 		return sql.selectList(namespace + ".list");
+	}
+
+	// 게시물 작성
+	@Override
+	public void write(BoardVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		sql.insert(namespace + ".write", vo);
 	}
 
 }

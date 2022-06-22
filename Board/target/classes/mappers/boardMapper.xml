@@ -10,5 +10,12 @@
 		bno, title, content, writer, regDate, viewCnt
 		from board.tbl_board
 	</select>
+	
+	<!-- 게시물 작성 -->
+	<insert id="write" parameterType="com.manse.board.domain.BoardVO">
+ 		insert into
+ 		board.tbl_board(title, content, writer)
+   		values(#{title}, #{content}, #{writer})
+	</insert>
 
 </mapper>

@@ -19,6 +19,7 @@ public class BoardController {
 	@Inject
 	private BoardService service;
 	
+	// 게시물 목록
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public void getList(Model model) throws Exception{
 		List list = null;
@@ -36,5 +37,18 @@ public class BoardController {
 		}
 		
 		model.addAttribute("list", addlist);
+	}
+	
+	// 게시물 작성
+	@RequestMapping(value="/write", method=RequestMethod.GET)
+	public void getWrite() throws Exception{
+		
+	}
+	
+	// 게시물 작성
+	@RequestMapping(value="/write", method=RequestMethod.POST)
+	public String postwrite(BoardVO vo) throws Exception{
+		service.write(vo);
+		return "redirect:/board/list";
 	}
 }
