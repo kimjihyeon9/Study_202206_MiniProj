@@ -8,6 +8,11 @@
 </head>
 <body>
 
+<div id="nav" align="center">
+	<%@ include file="../include/nav.jsp" %>
+</div>
+<br>
+
 <form method="post">
 
 <label>제목</label>

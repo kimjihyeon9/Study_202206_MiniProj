@@ -2,13 +2,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fn"   uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시물 목록</title>
+<title>게시물 리스트</title>
 </head>
 <body>
+
+<div id="nav" align="center">
+	<%@ include file="../include/nav.jsp" %>
+</div>
+<br>
 
 <%-- <table>
 	<thead>
@@ -39,13 +45,13 @@
 	<input type="hidden" id="visiblePages" name="bisiblePages" value=""> <!-- 페이징을 위한 hidden 타입 추가 -->
 	
 	<div align="center">
-		<table width="1200px">
+		<!-- <table width="1200px">
 			<tr>
 				<td aling="right">
 					<button type="button" id="write" name="write"><a href="/board/write">글 작성</a></button>
 				</td>
 			</tr>
-		</table>
+		</table> -->
 		
 		<table border="" width="1200px">
 			<tr>
@@ -60,6 +66,9 @@
 				</th>
 				<th width="200px">
 					작성일
+				</th>
+				<th width="200px">
+					조회수
 				</th>
 			</tr>
 			
@@ -80,6 +89,7 @@
 							    <a href="/board/view?bno=${list.bno}">${list.title}</a>
 							</td>
 							<td align="center">${list.writer }</td>
+							<td align="center"><fmt:formatDate value="${list.regDate }" pattern="yyyy-MM-dd"/></td>
 							<td align="center">${list.viewCnt }</td>
 						</tr>
 					</c:forEach>

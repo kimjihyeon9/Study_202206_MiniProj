@@ -7,6 +7,11 @@
 </head>
 <body>
 
+<div id="nav" align="center">
+	<%@ include file="../include/nav.jsp" %>
+</div>
+<br>
+
 <form method="post">
 	<div align="center">
 		<table border="1" width="1150px">
@@ -38,6 +43,11 @@
 			</tr>
 		</table>
 		<br>
+		
+		<div>
+			<button><a href="/board/modify?bno=${view.bno }">게시물 수정</a></button>
+			<button><a href="/board/delete?bno=${view.bno }">게시물 삭제</a></button>
+		</div>
 	</div>
 	
 </form>
