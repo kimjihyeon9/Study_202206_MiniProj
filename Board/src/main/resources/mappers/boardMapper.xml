@@ -17,5 +17,15 @@
  		board.tbl_board(title, content, writer)
    		values(#{title}, #{content}, #{writer})
 	</insert>
+	
+	<!-- 게시물 조회 -->
+	<select id="view" parameterType="int" resultType="com.manse.board.domain.BoardVO">
+		select
+		bno, title, content, writer, regDate, viewCnt
+		from
+		board.tbl_board
+		where
+		bno = #{bno}
+	</select>
 
 </mapper>
