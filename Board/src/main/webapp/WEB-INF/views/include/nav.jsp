@@ -12,3 +12,4 @@
 
 <button><a href="/board/list">글 목록</a></button>
 <button><a href="/board/write">글 작성</a></button>
+<button><a href="/board/listPage?num=1">글 목록(페이징)</a></button>

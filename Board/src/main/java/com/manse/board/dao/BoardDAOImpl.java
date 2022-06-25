@@ -1,5 +1,6 @@
 package com.manse.board.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -50,6 +51,23 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public void delete(int bno) throws Exception {
 		sql.delete(namespace + ".delete", bno);
+	}
+
+	// °Ô½Ã¹° ÃÑ °¹¼ö
+	@Override
+	public int count() throws Exception {
+		return sql.selectOne(namespace + ".count");
+	}
+
+	// °Ô½Ã¹° ¸ñ·Ï + ÆäÀÌÂ¡
+	@Override
+	public List listPage(int displayPost, int postNum) throws Exception {
+		HashMap<String, Integer> data = new HashMap<String, Integer>();
+		
+		data.put("displayPost", displayPost);
+		data.put("postNum", postNum);
+		
+		return sql.selectList(namespace + ".listPage", data);
 	}
 
 }
