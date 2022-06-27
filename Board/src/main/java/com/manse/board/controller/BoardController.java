@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.manse.board.domain.BoardVO;
+import com.manse.board.domain.Page;
 import com.manse.board.service.BoardService;
 
 @Controller
@@ -93,7 +94,7 @@ public class BoardController {
 	@RequestMapping(value="/listPage", method=RequestMethod.GET)
 	public void getListPage(Model model, @RequestParam("num") int num) throws Exception{
 		// 게시물 총 갯수
-		int count = service.count();
+/*		int count = service.count();
 		
 		// 한 페이지에 출력할 게시물 갯수
 		int postNum = 5;
@@ -139,6 +140,56 @@ public class BoardController {
 		model.addAttribute("next", next);
 		
 		// 현재 페이지
+		model.addAttribute("select", num); */
+		
+		
+		Page page = new Page();
+		
+		page.setNum(num);
+		page.setCount(service.count());
+		
+		List list = null;
+		list = service.listPage(page.getDisplayPost(), page.getPostNum());
+		
+		model.addAttribute("list", list);
+/*		model.addAttribute("pageNum", page.getPageNum());
+		
+		model.addAttribute("startPageNum", page.getStartPageNum());
+		model.addAttribute("endPageNum", page.getEndPageNum());
+		
+		model.addAttribute("prev", page.getPrev());
+		model.addAttribute("pageNum", page.getNext()); */
+		
+		model.addAttribute("page", page);
 		model.addAttribute("select", num);
+	}
+	
+	// 게시물 목록 + 페이징 추가 + 검색
+	@RequestMapping(value="/listPageSearch", method=RequestMethod.GET)
+	public void getListPageSearch(Model model, @RequestParam("num") int num,
+			@RequestParam(value="searvhType", required=false, defaultValue="title") String searchType,
+			@RequestParam(value="keyword", required=false, defaultValue="") String keyword) throws Exception{
+		
+		Page page = new Page();
+		
+		page.setNum(num);
+//		page.setCount(service.count()); // 페이징을 만들때 게시물의 갯수를 구하는 메서드
+		page.setCount(service.searchCount(searchType, keyword));
+		
+		// 검색 타입과 검색어
+//		page.setSearchTypeKeyword(searchType, keyword);
+		page.setSearchType(searchType);
+		page.setKeyword(keyword);
+		
+		List list = null;
+//		list = service.listPage(page.getDisplayPost(), page.getPostNum());
+		list = service.listPageSearch(page.getDisplayPost(), page.getPostNum(), searchType, keyword);
+		
+		model.addAttribute("list", list);
+		model.addAttribute("page", page);
+		model.addAttribute("select", num);
+
+//		model.addAttribute("searchType", searchType);
+//		model.addAttribute("keyword", keyword);
 	}
 }
