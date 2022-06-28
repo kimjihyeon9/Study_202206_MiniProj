@@ -98,4 +98,10 @@ public class BoardDAOImpl implements BoardDAO {
 		return sql.selectOne(namespace + ".searchCount", data);
 	}
 
+	// 게시물 조회수
+	@Override
+	public void updateReviewCnt(int bno) throws Exception {
+		sql.update(namespace + ".updateReviewCnt", bno);
+	}
+
 }

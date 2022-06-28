@@ -110,4 +110,12 @@
 			WHERE writer LIKE concat('%', #{keyword}, '%')
 		</if>
 	</select>
+	
+	<!-- 조회수 올리기 -->
+	<update id="updateReviewCnt">
+		update board.tbl_board
+		set
+		viewCnt = viewCnt + 1
+		where bno = #{bno} 
+	</update>
 </mapper>
