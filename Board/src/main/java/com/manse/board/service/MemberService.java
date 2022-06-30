@@ -12,5 +12,5 @@ public interface MemberService {
 //	public MemberVO readMemberWithIDPW(String userId, String userPw) throws Exception;
 	
 	// 로그인 기능
-	public MemberVO loginMember(MemberVO vo);
+	public MemberVO login(MemberVO vo) throws Exception;
 }

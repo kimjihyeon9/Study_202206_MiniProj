@@ -14,9 +14,17 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	private static String namespace = "com.board.mappers.member";
 
+	// 회원가입
 	@Override
 	public void register(MemberVO vo) throws Exception {
 		sql.insert(namespace + ".register", vo);
+	}
+
+	// 로그인
+	@Override
+	public MemberVO login(MemberVO vo) throws Exception {
+		
+		return sql.selectOne(namespace + ".login", vo);
 	}
 
 }

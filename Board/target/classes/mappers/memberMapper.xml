@@ -8,4 +8,12 @@
 		insert into tbl_member(userid, userpw, username)
 		values(#{userId}, #{userPw}, #{userName})
 	</insert>
+	
+	<!-- 로그인 -->
+	<select id="login" resultType="com.manse.board.domain.MemberVO">
+		select userid, userpw
+		from tbl_member
+		where userid = #{userId}
+		and userpw = #{userPw}
+	</select>
 </mapper>

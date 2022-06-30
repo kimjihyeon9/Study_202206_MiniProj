@@ -22,11 +22,9 @@ public class MemberServiceImpl implements MemberService {
 
 	// 로그인 기능
 	@Override
-	public MemberVO loginMember(MemberVO vo) {
-		System.out.println("S : 컨트롤러에서 호출받으면 필요한 정보를 받아서 DAO로 전달");
-		MemberVO returnVO = null;
+	public MemberVO login(MemberVO vo) throws Exception {
 		
-		return null;
+		return dao.login(vo);
 	}
 
 }

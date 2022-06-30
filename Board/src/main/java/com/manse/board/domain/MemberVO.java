@@ -2,6 +2,21 @@ package com.manse.board.domain;
 
 import java.util.Date;
 
+/*
+
+use board;
+
+create table tbl_member(
+userId int(11) not null auto_increment,
+userPw varchar(100) not null,
+userName varchar(40) not null,
+regDate timestamp not null default now(),
+primary key(userId)
+);
+
+
+ */
+
 public class MemberVO {
 	private String userId;
 	private String userPw;
