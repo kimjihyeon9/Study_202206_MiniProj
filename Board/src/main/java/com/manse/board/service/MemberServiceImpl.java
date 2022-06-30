@@ -12,25 +12,20 @@ public class MemberServiceImpl implements MemberService {
 
 	// DB와 연결 (의존 주입)
 	@Inject
-	private MemberDAO mdao;
+	private MemberDAO dao;
 	
 	// 회원가입
 	@Override
-	public void insertMember(MemberVO vo) {
-		// 컨트롤러 -> 서비스 호출 -> DAO 호출 -> Mapper -> DB
-		System.out.println("S : 회원가입동작");
-		
-		if(vo == null) {
-			// 처리
-			return;
-		}
-		mdao.insertMember(vo);
+	public void register(MemberVO vo) throws Exception {
+		dao.register(vo);
 	}
 
 	// 로그인 기능
 	@Override
 	public MemberVO loginMember(MemberVO vo) {
-		// TODO Auto-generated method stub
+		System.out.println("S : 컨트롤러에서 호출받으면 필요한 정보를 받아서 DAO로 전달");
+		MemberVO returnVO = null;
+		
 		return null;
 	}
 
