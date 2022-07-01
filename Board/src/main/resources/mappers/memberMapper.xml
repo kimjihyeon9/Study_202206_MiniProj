@@ -11,9 +11,17 @@
 	
 	<!-- 로그인 -->
 	<select id="login" resultType="com.manse.board.domain.MemberVO">
-		select userid, userpw
+		select userid, userpw, username
 		from tbl_member
 		where userid = #{userId}
 		and userpw = #{userPw}
 	</select>
+	
+	<!-- 회원정보 수정 -->
+	<update id="memberUpdate">
+		update tbl_member set
+		userpw = #{userPw},
+		username = #{userName}
+		where userid = #{userId}
+	</update>
 </mapper>

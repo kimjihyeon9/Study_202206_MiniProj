@@ -27,4 +27,12 @@ public class MemberServiceImpl implements MemberService {
 		return dao.login(vo);
 	}
 
+	// 회원정보 수정
+	// Controller에서 보내는 파라미터들을 memberUpdate(MemberVO vo)로 받고
+	@Override
+	public void memberUpdate(MemberVO vo) throws Exception {
+		// 받은 vo를 DAO로 보내준다
+		dao.memberUpdate(vo);
+	}
+
 }

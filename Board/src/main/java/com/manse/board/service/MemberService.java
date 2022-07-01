@@ -13,4 +13,7 @@ public interface MemberService {
 	
 	// 로그인 기능
 	public MemberVO login(MemberVO vo) throws Exception;
+	
+	// 회원정보 수정
+	public void memberUpdate(MemberVO vo) throws Exception;
 }
