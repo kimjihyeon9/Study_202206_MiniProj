@@ -27,6 +27,10 @@
 		$("#memberUpdateBtn").on("click", function(){
 			location.href="member/memberUpdateView";
 		})
+		
+		$("#memberDeleteBtn").on("click", function(){
+			location.href="member/memberDeleteView";
+		})
 	})
 </script>
 
@@ -62,6 +66,7 @@
 		<div>
 			<p>${member.userId }님 환영합니다.</p>
 			<button id="memberUpdateBtn" type="button">회원정보수정</button>
+			<button id="memberDeleteBtn" type="button">회원 탈퇴</button>
 			<button id="logoutBtn" type="button">로그아웃</button>
 		</div>
 	</c:if>

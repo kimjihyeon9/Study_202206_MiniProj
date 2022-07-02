@@ -24,4 +24,11 @@
 		username = #{userName}
 		where userid = #{userId}
 	</update>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="memberDelete">
+		delete from tbl_member
+		where userid = #{userId}
+		and userpw = #{userPw}
+	</delete>
 </mapper>

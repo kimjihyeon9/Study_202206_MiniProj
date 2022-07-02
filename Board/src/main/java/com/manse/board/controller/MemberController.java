@@ -40,6 +40,9 @@ public class MemberController {
 	// 로그인 post
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
+		// session : 웹브러우저와 웹서버를 연결상태를 의미
+		// httpSession : 클라이언트의 웹브라우저와 웹서버의 연결 상태를 관리하는 객체
+		
 		logger.info("post login");
 		
 		HttpSession session = req.getSession();
@@ -65,7 +68,7 @@ public class MemberController {
 	// 회원정보 수정
 	@RequestMapping(value="/memberUpdateView", method=RequestMethod.GET)
 	public String registerUpdateView() throws Exception{
-		return "member/meberUpdateView";
+		return "member/memberUpdateView";
 	}
 	
 	// 회원정보 수정
@@ -74,6 +77,35 @@ public class MemberController {
 		service.memberUpdate(vo);
 		session.invalidate();
 		
+		return "redirect:/";
+	}
+	
+	// 회원 탈퇴 get
+	@RequestMapping(value="/memberDeleteView", method=RequestMethod.GET)
+	public String memberDeleteView() throws Exception{
+		return "member/memberDeleteView";
+	}
+	
+	// 회원 탈퇴 post
+	@RequestMapping(value="/memberDelete", method=RequestMethod.POST)
+	public String memberDelete(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception{
+		// 세션에 있는 member를 가져와 member변수에 넣어준다
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		
+		// 세션에 있는 비밀번호
+		String sessionPw = member.getUserPw();
+		
+		// vo로 들어오는 비밀번호
+		String voPw = vo.getUserPw();
+		
+		if(!(sessionPw.equals(voPw))) {
+			rttr.addFlashAttribute("msg", false);
+			
+			return "redirect:/member/memberDeleteView";
+		}
+		
+		service.memberDelete(vo);
+		session.invalidate();
 		return "redirect:/";
 	}
 }

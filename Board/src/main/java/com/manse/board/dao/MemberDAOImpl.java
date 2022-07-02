@@ -37,4 +37,15 @@ public class MemberDAOImpl implements MemberDAO {
 		
 	}
 
+	// 회원 탈퇴
+	// 업데이트와 마찬가지로 흐름은 같다
+	@Override
+	public void memberDelete(MemberVO vo) throws Exception {
+		// MemberVO에 담긴 값들을 보내준다
+		// 그럼 xml에서 memberMapper.memberDelete에 보면
+		// #{userId}, #{userPw}에 파라미터값이 매칭이 될것이다
+		sql.delete(namespace + ".memberDelete", vo);
+		
+	}
+
 }
