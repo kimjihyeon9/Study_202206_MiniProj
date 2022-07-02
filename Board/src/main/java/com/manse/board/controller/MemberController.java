@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.manse.board.domain.MemberVO;
@@ -34,7 +35,7 @@ public class MemberController {
 		logger.info("post register");
 		service.register(vo);
 		
-		return null;
+		return "redirect:/";
 	}
 	
 	// 로그인 post
@@ -108,24 +109,15 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:/";
 	}
+	
+	// 패스워드 체크
+	@ResponseBody
+	@RequestMapping(value="/passChk", method=RequestMethod.POST)
+	public int passChk(MemberVO vo) throws Exception{
+		int result = service.passChk(vo);
+		return result;
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -14,4 +14,7 @@ public interface MemberDAO {
 	
 	// È¸¿ø Å»Åð
 	public void memberDelete(MemberVO vo) throws Exception;
+	
+	// ÆÐ½º¿öµå Ã¼Å©
+	public int passChk(MemberVO vo) throws Exception;
 }

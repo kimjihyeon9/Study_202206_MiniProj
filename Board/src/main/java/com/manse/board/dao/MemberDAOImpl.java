@@ -48,4 +48,11 @@ public class MemberDAOImpl implements MemberDAO {
 		
 	}
 
+	// 패스워드 체크
+	@Override
+	public int passChk(MemberVO vo) throws Exception {
+		int result = sql.selectOne(namespace + ".passChk", vo);
+		return result;
+	}
+
 }
