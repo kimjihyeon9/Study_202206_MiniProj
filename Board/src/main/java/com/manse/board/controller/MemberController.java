@@ -33,7 +33,19 @@ public class MemberController {
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public String postRegister(MemberVO vo) throws Exception{
 		logger.info("post register");
-		service.register(vo);
+		int result = service.idChk(vo);
+		
+		try {
+			if(result == 1) {
+				return "/member/register";
+			} else if(result == 0) {
+				service.register(vo);
+			}
+			// 입력된 아이디가 존재한다면 -> 다시 회원가입 페이지로 돌아가기
+			// 존재하지 않는다면 -> register
+		} catch(Exception e) {
+			throw new RuntimeException();
+		}
 		
 		return "redirect:/";
 	}
@@ -115,6 +127,14 @@ public class MemberController {
 	@RequestMapping(value="/passChk", method=RequestMethod.POST)
 	public int passChk(MemberVO vo) throws Exception{
 		int result = service.passChk(vo);
+		return result;
+	}
+	
+	// 아이디 중복 체크
+	@ResponseBody
+	@RequestMapping(value="/idChk", method=RequestMethod.POST)
+	public int idChk(MemberVO vo) throws Exception{
+		int result = service.idChk(vo);
 		return result;
 	}
 }

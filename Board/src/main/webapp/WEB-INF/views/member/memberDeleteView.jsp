@@ -41,7 +41,7 @@
 						alert("패스워드가 틀렸습니다.");
 						return;
 					} else {
-						if(confirm("회원탈퇴하시겠습니까?") == true){
+						if(confirm("회원탈퇴하시겠습니까?")){
 							$("#delForm").submit();
 						}
 					}
