@@ -20,9 +20,10 @@
 	<!-- 회원정보 수정 -->
 	<update id="memberUpdate">
 		update tbl_member set
+		userid = #{userId},
 		userpw = #{userPw},
 		username = #{userName}
-		where userid = #{userId}
+		where mno = #{mno}
 	</update>
 	
 	<!-- 회원탈퇴 -->
@@ -35,7 +36,7 @@
 	<!-- 패스워드 체크 -->
 	<select id="passChk" resultType="int">
 		select count(*) from tbl_member
-		where userid = #{userId}
+		where userId = #{userId}
 		and userpw = #{userPw}
 	</select>
 	

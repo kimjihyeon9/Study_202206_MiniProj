@@ -18,11 +18,18 @@ primary key(userId)
  */
 
 public class MemberVO {
+	private int mno;
 	private String userId;
 	private String userPw;
 	private String userName;
 	private Date regDate;
 	
+	public int getMno() {
+		return mno;
+	}
+	public void setMno(int mno) {
+		this.mno = mno;
+	}
 	public String getUserId() {
 		return userId;
 	}
@@ -50,8 +57,8 @@ public class MemberVO {
 	
 	@Override
 	public String toString() {
-		return "MemberVO [ userId=" + userId + ", userPw=" + userPw + ", userName=" + userName + ", regDate=" + regDate
-				+ " ]";
+		return "MemberVO [mno=" + mno + ", userId=" + userId + ", userPw=" + userPw + ", userName=" + userName
+				+ ", regDate=" + regDate + "]";
 	}
 	
 }

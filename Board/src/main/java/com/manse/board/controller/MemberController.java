@@ -104,7 +104,7 @@ public class MemberController {
 	public String memberDelete(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception{
 		// 세션에 있는 member를 가져와 member변수에 넣어준다
 		MemberVO member = (MemberVO) session.getAttribute("member");
-		
+//		System.out.println("여기지나가냐?");
 		// 세션에 있는 비밀번호
 		String sessionPw = member.getUserPw();
 		

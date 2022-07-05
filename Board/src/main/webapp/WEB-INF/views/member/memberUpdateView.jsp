@@ -46,7 +46,7 @@
 	<form action="/member/memberUpdate" method="post">
 		<div class="form-group has-feedback">
 			<label class="control-label" for="userId">아이디</label>
-			<input class="form-control" type="text" id="userId" name="userId" value="${member.userId }" readonly="readonly" />
+			<input class="form-control" type="text" id="userId" name="userId" value="${member.userId }" />
 		</div>
 		
 		<div class="form-group has-feedback">
