@@ -9,8 +9,6 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	
-	<mybatis-spring:scan base-package="com.manse.board.mappers.board"/>
-	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
@@ -27,11 +25,6 @@
 	</bean>
 	
 	<bean id="sql" class="org.mybatis.spring.SqlSessionTemplate">
-   		<constructor-arg index="0" ref="sqlSessionFactory" />
-  	</bean>
-	
-	<context:component-scan base-package="com.manse.board.dao"></context:component-scan>
-   <context:component-scan base-package="com.manse.board.service"></context:component-scan>
-	
-	
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
 </beans>
