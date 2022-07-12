@@ -14,48 +14,48 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	private static String namespace = "com.board.mappers.member";
 
-	// È¸¿ø°¡ÀÔ
+	// íšŒì›ê°€ì…
 	@Override
 	public void register(MemberVO vo) throws Exception {
 		sql.insert(namespace + ".register", vo);
 	}
 
-	// ·Î±×ÀÎ
+	// ë¡œê·¸ì¸
 	@Override
 	public MemberVO login(MemberVO vo) throws Exception {
 		
 		return sql.selectOne(namespace + ".login", vo);
 	}
 
-	// È¸¿øÁ¤º¸ ¼öÁ¤
-	// ¼­ºñ½º¿¡¼­ º¸³½ ÆÄ¶ó¹ÌÅÍµéÀ» memberUpdate(MemberVO vo)¿¡ ´ã´Â´Ù
+	// íšŒì›ì •ë³´ ìˆ˜ì •
+	// ì„œë¹„ìŠ¤ì—ì„œ ë³´ë‚¸ íŒŒë¼ë¯¸í„°ë“¤ì„ memberUpdate(MemberVO vo)ì— ë‹´ëŠ”ë‹¤
 	@Override
 	public void memberUpdate(MemberVO vo) throws Exception {
-		// vo¿¡ ´ã±ä ÆÄ¶ó¹ÌÅÍµéÀº memberMapper.xml¿¡ memberMapper¶ó´Â namespace¿¡
-		// ¾ÆÀÌµğ°¡ memberUpdateÀÎ Äõ¸®¿¡ ÆÄ¶ó¹ÌÅÍµéÀ» ³Ö¾îÁØ´Ù
+		// voì— ë‹´ê¸´ íŒŒë¼ë¯¸í„°ë“¤ì€ memberMapper.xmlì— memberMapperë¼ëŠ” namespaceì—
+		// ì•„ì´ë””ê°€ memberUpdateì¸ ì¿¼ë¦¬ì— íŒŒë¼ë¯¸í„°ë“¤ì„ ë„£ì–´ì¤€ë‹¤
 		sql.update(namespace + ".memberUpdate", vo);
 		
 	}
 
-	// È¸¿ø Å»Åğ
-	// ¾÷µ¥ÀÌÆ®¿Í ¸¶Âù°¡Áö·Î Èå¸§Àº °°´Ù
+	// íšŒì› íƒˆí‡´
+	// ì—…ë°ì´íŠ¸ì™€ ë§ˆì°¬ê°€ì§€ë¡œ íë¦„ì€ ê°™ë‹¤
 	@Override
 	public void memberDelete(MemberVO vo) throws Exception {
-		// MemberVO¿¡ ´ã±ä °ªµéÀ» º¸³»ÁØ´Ù
-		// ±×·³ xml¿¡¼­ memberMapper.memberDelete¿¡ º¸¸é
-		// #{userId}, #{userPw}¿¡ ÆÄ¶ó¹ÌÅÍ°ªÀÌ ¸ÅÄªÀÌ µÉ°ÍÀÌ´Ù
+		// MemberVOì— ë‹´ê¸´ ê°’ë“¤ì„ ë³´ë‚´ì¤€ë‹¤
+		// ê·¸ëŸ¼ xmlì—ì„œ memberMapper.memberDeleteì— ë³´ë©´
+		// #{userId}, #{userPw}ì— íŒŒë¼ë¯¸í„°ê°’ì´ ë§¤ì¹­ì´ ë ê²ƒì´ë‹¤
 		sql.delete(namespace + ".memberDelete", vo);
 		
 	}
 
-	// ÆĞ½º¿öµå Ã¼Å©
+	// íŒ¨ìŠ¤ì›Œë“œ ì²´í¬
 	@Override
 	public int passChk(MemberVO vo) throws Exception {
 		int result = sql.selectOne(namespace + ".passChk", vo);
 		return result;
 	}
 
-	// ¾ÆÀÌµğ Áßº¹ Ã¼Å©
+	// ì•„ì´ë”” ì¤‘ë³µ ì²´í¬
 	@Override
 	public int idChk(MemberVO vo) throws Exception {
 		int result = sql.selectOne(namespace + ".idChk", vo);

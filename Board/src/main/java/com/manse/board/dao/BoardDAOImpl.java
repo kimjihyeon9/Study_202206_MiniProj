@@ -19,47 +19,47 @@ public class BoardDAOImpl implements BoardDAO {
 	
 	private static String namespace = "com.board.mappers.board";
 
-	// °Ô½Ã¹° ¸ñ·Ï
+	// ê²Œì‹œë¬¼ ëª©ë¡
 	@Override
 	public List list() throws Exception {
 		
 		return sql.selectList(namespace + ".list");
 	}
 
-	// °Ô½Ã¹° ÀÛ¼º
+	// ê²Œì‹œë¬¼ ì‘ì„±
 	@Override
 	public void write(BoardVO vo) throws Exception {
 		// TODO Auto-generated method stub
 		sql.insert(namespace + ".write", vo);
 	}
 
-	// °Ô½Ã¹° Á¶È¸
+	// ê²Œì‹œë¬¼ ì¡°íšŒ
 	@Override
 	public BoardVO view(int bno) throws Exception {
 		
 		return sql.selectOne(namespace + ".view", bno);
 	}
 
-	// °Ô½Ã¹° ¼öÁ¤
+	// ê²Œì‹œë¬¼ ìˆ˜ì •
 	@Override
 	public void modify(BoardVO vo) throws Exception {
 		
 		sql.update(namespace + ".modify", vo);
 	}
 
-	// °Ô½Ã¹° »èÁ¦
+	// ê²Œì‹œë¬¼ ì‚­ì œ
 	@Override
 	public void delete(int bno) throws Exception {
 		sql.delete(namespace + ".delete", bno);
 	}
 
-	// °Ô½Ã¹° ÃÑ °¹¼ö
+	// ê²Œì‹œë¬¼ ì´ ê°¯ìˆ˜
 	@Override
 	public int count() throws Exception {
 		return sql.selectOne(namespace + ".count");
 	}
 
-	// °Ô½Ã¹° ¸ñ·Ï + ÆäÀÌÂ¡
+	// ê²Œì‹œë¬¼ ëª©ë¡ + í˜ì´ì§•
 	@Override
 	public List listPage(int displayPost, int postNum) throws Exception {
 		HashMap<String, Integer> data = new HashMap<String, Integer>();
@@ -70,7 +70,7 @@ public class BoardDAOImpl implements BoardDAO {
 		return sql.selectList(namespace + ".listPage", data);
 	}
 
-	// °Ô½Ã¹° ¸ñ·Ï + ÆäÀÌÂ¡ + °Ë»ö
+	// ê²Œì‹œë¬¼ ëª©ë¡ + í˜ì´ì§• + ê²€ìƒ‰
 	@Override
 	public List<BoardVO> listPageSearch(int displayPost, int postNum, String searchType, String keyword)
 			throws Exception {
@@ -86,7 +86,7 @@ public class BoardDAOImpl implements BoardDAO {
 		return sql.selectList(namespace + ".listPageSearch", data);
 	}
 
-	// °Ô½Ã¹° ÃÑ °¹¼ö + °Ë»ö Àû¿ë
+	// ê²Œì‹œë¬¼ ì´ ê°¯ìˆ˜ + ê²€ìƒ‰ ì ìš©
 	@Override
 	public int searchCount(String searchType, String keyword) throws Exception {
 		
@@ -98,7 +98,7 @@ public class BoardDAOImpl implements BoardDAO {
 		return sql.selectOne(namespace + ".searchCount", data);
 	}
 
-	// °Ô½Ã¹° Á¶È¸¼ö
+	// ê²Œì‹œë¬¼ ì¡°íšŒìˆ˜
 	@Override
 	public void updateReviewCnt(int bno) throws Exception {
 		sql.update(namespace + ".updateReviewCnt", bno);

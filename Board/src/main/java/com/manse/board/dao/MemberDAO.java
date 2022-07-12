@@ -3,21 +3,21 @@ package com.manse.board.dao;
 import com.manse.board.domain.MemberVO;
 
 public interface MemberDAO {
-	// È¸¿ø°¡ÀÔ
+	// íšŒì›ê°€ì…
 	public void register(MemberVO vo) throws Exception;
 	
-	// ·Î±×ÀÎ
+	// ë¡œê·¸ì¸
 	public MemberVO login(MemberVO vo) throws Exception;
 	
-	// È¸¿øÁ¤º¸ ¼öÁ¤
+	// íšŒì›ì •ë³´ ìˆ˜ì •
 	public void memberUpdate(MemberVO vo) throws Exception;
 	
-	// È¸¿ø Å»Åğ
+	// íšŒì› íƒˆí‡´
 	public void memberDelete(MemberVO vo) throws Exception;
 	
-	// ÆĞ½º¿öµå Ã¼Å©
+	// íŒ¨ìŠ¤ì›Œë“œ ì²´í¬
 	public int passChk(MemberVO vo) throws Exception;
 	
-	// ¾ÆÀÌµğ Áßº¹ Ã¼Å©
+	// ì•„ì´ë”” ì¤‘ë³µ ì²´í¬
 	public int idChk(MemberVO vo) throws Exception;
 }

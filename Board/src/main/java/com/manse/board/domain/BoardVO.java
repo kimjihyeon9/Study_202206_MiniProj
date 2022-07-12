@@ -18,19 +18,49 @@ primary key(bno)
 );
 
 insert into tbl_board(title, content, writer)
-  values('�׽�Ʈ ����1', '�׽�Ʈ ����', '�ۼ���');
+  values('테스트 제목1', '테스트 내용', '작성자');
 
 insert into tbl_board(title, content, writer)
-  values('�׽�Ʈ ����2', '�׽�Ʈ ����', '�ۼ���');
+  values('테스트 제목2', '테스트 내용', '작성자');
 
 insert into tbl_board(title, content, writer)
-  values('�׽�Ʈ ����3', '�׽�Ʈ ����', '�ۼ���');
+  values('테스트 제목3', '테스트 내용', '작성자');
 
 insert into tbl_board(title, content, writer)
-  values('�׽�Ʈ ����4', '�׽�Ʈ ����', '�ۼ���');
+  values('테스트 제목4', '테스트 내용', '작성자');
 
 insert into tbl_board(title, content, writer)
-  values('�׽�Ʈ ����5', '�׽�Ʈ ����', '�ۼ���');
+  values('테스트 제목5', '테스트 내용', '작성자');
+
+insert into tbl_board(title, content, writer)
+  values('테스트 제목6', '테스트 내용', '작성자');
+
+insert into tbl_board(title, content, writer)
+  values('테스트 제목7', '테스트 내용', '작성자');
+
+insert into tbl_board(title, content, writer)
+  values('테스트 제목8', '테스트 내용', '작성자');
+
+insert into tbl_board(title, content, writer)
+  values('테스트 제목9', '테스트 내용', '작성자');
+
+insert into tbl_board(title, content, writer)
+  values('테스트 제목10', '테스트 내용', '작성자');
+
+ insert into tbl_board(title, content, writer)
+  values('테스트 제목11', '테스트 내용', '작성자');
+
+insert into tbl_board(title, content, writer)
+  values('테스트 제목12', '테스트 내용', '작성자');
+
+insert into tbl_board(title, content, writer)
+  values('테스트 제목13', '테스트 내용', '작성자');
+
+insert into tbl_board(title, content, writer)
+  values('테스트 제목14', '테스트 내용', '작성자');
+
+insert into tbl_board(title, content, writer)
+  values('테스트 제목15', '테스트 제내용목', '작성자');
 
 commit;
 

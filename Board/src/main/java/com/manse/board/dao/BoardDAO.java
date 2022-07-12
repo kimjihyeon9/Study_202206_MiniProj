@@ -5,33 +5,33 @@ import java.util.List;
 import com.manse.board.domain.BoardVO;
 
 public interface BoardDAO {
-	// °Ô½Ã¹° ¸ñ·Ï
+	// ê²Œì‹œë¬¼ ëª©ë¡
 	public List list() throws Exception;
 	
-	// °Ô½Ã¹° ÀÛ¼º
+	// ê²Œì‹œë¬¼ ì‘ì„±
 	public void write(BoardVO vo) throws Exception;
 	
-	// °Ô½Ã¹° Á¶È¸
+	// ê²Œì‹œë¬¼ ì¡°íšŒ
 	public BoardVO view(int bno) throws Exception;
 	
-	// °Ô½Ã¹° ¼öÁ¤
+	// ê²Œì‹œë¬¼ ìˆ˜ì •
 	public void modify(BoardVO vo) throws Exception;
 	
-	// °Ô½Ã¹° »èÁ¦
+	// ê²Œì‹œë¬¼ ì‚­ì œ
 	public void delete(int bno) throws Exception;
 	
-	// °Ô½Ã¹° ÃÑ °¹¼ö
+	// ê²Œì‹œë¬¼ ì´ ê°¯ìˆ˜
 	public int count() throws Exception;
 	
-	// °Ô½Ã¹° ¸ñ·Ï + ÆäÀÌÂ¡
+	// ê²Œì‹œë¬¼ ëª©ë¡ + í˜ì´ì§•
 	public List listPage(int displayPost, int postNum) throws Exception;
 	
-	// °Ô½Ã¹° ¸ñ·Ï + ÆäÀÌÂ¡ + °Ë»ö
+	// ê²Œì‹œë¬¼ ëª©ë¡ + í˜ì´ì§• + ê²€ìƒ‰
 	public List<BoardVO> listPageSearch(int displayPost, int postNum, String searchType, String keyword) throws Exception;
 	
-	// °Ô½Ã¹° ÃÑ °¹¼ö + °Ë»ö Àû¿ë
+	// ê²Œì‹œë¬¼ ì´ ê°¯ìˆ˜ + ê²€ìƒ‰ ì ìš©
 	public int searchCount(String searchType, String keyword) throws Exception;
 	
-	// °Ô½Ã¹° Á¶È¸¼ö
+	// ê²Œì‹œë¬¼ ì¡°íšŒìˆ˜
 	public void updateReviewCnt(int bno) throws Exception;
 }

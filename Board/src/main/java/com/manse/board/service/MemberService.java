@@ -3,26 +3,26 @@ package com.manse.board.service;
 import com.manse.board.domain.MemberVO;
 
 public interface MemberService {
-	// È¸¿ø°¡ÀÔ (ÀÏ¹İÈ¸¿ø°¡ÀÔÅ×ÀÌºí¿¡ sns°èÁ¤ ÄÃ·³ Ãß°¡ÇÏ±â)
-	// ÀÏ¹İÀûÀ¸·Î´Â DAO¶û °°Àº ¸Ş¼Òµå¸íÀ» »ç¿ëÇÏ¿© ÀÏ°ü¼ºÀ» À¯ÁöÇÑ´Ù
+	// íšŒì›ê°€ì… (ì¼ë°˜íšŒì›ê°€ì…í…Œì´ë¸”ì— snsê³„ì • ì»¬ëŸ¼ ì¶”ê°€í•˜ê¸°)
+	// ì¼ë°˜ì ìœ¼ë¡œëŠ” DAOë‘ ê°™ì€ ë©”ì†Œë“œëª…ì„ ì‚¬ìš©í•˜ì—¬ ì¼ê´€ì„±ì„ ìœ ì§€í•œë‹¤
 	public void register(MemberVO vo) throws Exception;
 	
-	// ·Î±×ÀÎ±â´É DAO¶û °°Àº ÀÌ¸§À¸·Î ÇÏÁö ¾Ê´Â ÀÌÀ¯´Â?
-	//		ÀÌ¸§ÀÌ ´Ş¶óµµ ¸Ş¼­µå»ı¼º°¡´ÉÇÏ´Ù´Â °É º¸¿©ÁÖ±â À§ÇØ¼­
+	// ë¡œê·¸ì¸ê¸°ëŠ¥ DAOë‘ ê°™ì€ ì´ë¦„ìœ¼ë¡œ í•˜ì§€ ì•ŠëŠ” ì´ìœ ëŠ”?
+	//		ì´ë¦„ì´ ë‹¬ë¼ë„ ë©”ì„œë“œìƒì„±ê°€ëŠ¥í•˜ë‹¤ëŠ” ê±¸ ë³´ì—¬ì£¼ê¸° ìœ„í•´ì„œ
 //	public MemberVO readMemberWithIDPW(String userId, String userPw) throws Exception;
 	
-	// ·Î±×ÀÎ ±â´É
+	// ë¡œê·¸ì¸ ê¸°ëŠ¥
 	public MemberVO login(MemberVO vo) throws Exception;
 	
-	// È¸¿øÁ¤º¸ ¼öÁ¤
+	// íšŒì›ì •ë³´ ìˆ˜ì •
 	public void memberUpdate(MemberVO vo) throws Exception;
 	
-	// È¸¿ø Å»Åğ
+	// íšŒì› íƒˆí‡´
 	public void memberDelete(MemberVO vo) throws Exception;
 	
-	// ÆĞ½º¿öµå Ã¼Å©
+	// íŒ¨ìŠ¤ì›Œë“œ ì²´í¬
 	public int passChk(MemberVO vo) throws Exception;
 	
-	// ¾ÆÀÌµğ Áßº¹ Ã¼Å©
+	// ì•„ì´ë”” ì¤‘ë³µ ì²´í¬
 	public int idChk(MemberVO vo) throws Exception;
 }

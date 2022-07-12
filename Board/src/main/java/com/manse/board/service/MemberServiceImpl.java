@@ -10,46 +10,46 @@ import com.manse.board.domain.MemberVO;
 @Service
 public class MemberServiceImpl implements MemberService {
 
-	// DB¿Í ¿¬°á (ÀÇÁ¸ ÁÖÀÔ)
+	// DBì™€ ì—°ê²° (ì˜ì¡´ ì£¼ì…)
 	@Inject
 	private MemberDAO dao;
 	
-	// È¸¿ø°¡ÀÔ
+	// íšŒì›ê°€ì…
 	@Override
 	public void register(MemberVO vo) throws Exception {
 		dao.register(vo);
 	}
 
-	// ·Î±×ÀÎ ±â´É
+	// ë¡œê·¸ì¸ ê¸°ëŠ¥
 	@Override
 	public MemberVO login(MemberVO vo) throws Exception {
 		
 		return dao.login(vo);
 	}
 
-	// È¸¿øÁ¤º¸ ¼öÁ¤
-	// Controller¿¡¼­ º¸³»´Â ÆÄ¶ó¹ÌÅÍµéÀ» memberUpdate(MemberVO vo)·Î ¹Ş°í
+	// íšŒì›ì •ë³´ ìˆ˜ì •
+	// Controllerì—ì„œ ë³´ë‚´ëŠ” íŒŒë¼ë¯¸í„°ë“¤ì„ memberUpdate(MemberVO vo)ë¡œ ë°›ê³ 
 	@Override
 	public void memberUpdate(MemberVO vo) throws Exception {
-		// ¹ŞÀº vo¸¦ DAO·Î º¸³»ÁØ´Ù
+		// ë°›ì€ voë¥¼ DAOë¡œ ë³´ë‚´ì¤€ë‹¤
 		dao.memberUpdate(vo);
 	}
 
-	// È¸¿ø Å»Åğ
-	// ¾÷Å×ÀÌÆ®¿¡¼­ Ã³¸®ÇÑ ³»¿ë¿Í °°´Ù
+	// íšŒì› íƒˆí‡´
+	// ì—…í…Œì´íŠ¸ì—ì„œ ì²˜ë¦¬í•œ ë‚´ìš©ì™€ ê°™ë‹¤
 	@Override
 	public void memberDelete(MemberVO vo) throws Exception {
 		dao.memberDelete(vo);
 	}
 
-	// ÆĞ½º¿öµå Ã¼Å©
+	// íŒ¨ìŠ¤ì›Œë“œ ì²´í¬
 	@Override
 	public int passChk(MemberVO vo) throws Exception {
 		int result = dao.passChk(vo);
 		return result;
 	}
 
-	// ¾ÆÀÌµğ Áßº¹ Ã¼Å©
+	// ì•„ì´ë”” ì¤‘ë³µ ì²´í¬
 	@Override
 	public int idChk(MemberVO vo) throws Exception {
 		int result = dao.idChk(vo);

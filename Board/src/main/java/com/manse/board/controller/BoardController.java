@@ -21,7 +21,7 @@ public class BoardController {
 	@Inject
 	private BoardService service;
 	
-	// °Ô½Ã¹° ¸ñ·Ï
+	// ê²Œì‹œë¬¼ ëª©ë¡
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public void getList(Model model) throws Exception{
 		List list = null;
@@ -41,48 +41,48 @@ public class BoardController {
 		model.addAttribute("list", addlist);
 	}
 	
-	// °Ô½Ã¹° ÀÛ¼º
+	// ê²Œì‹œë¬¼ ì“°ê¸°
 	@RequestMapping(value="/write", method=RequestMethod.GET)
 	public void getWrite() throws Exception{
 		
 	}
 	
-	// °Ô½Ã¹° ÀÛ¼º
+	// ê²Œì‹œë¬¼ ì“°ê¸°
 	@RequestMapping(value="/write", method=RequestMethod.POST)
 	public String postwrite(BoardVO vo) throws Exception{
 		service.write(vo);
 		return "redirect:/board/list";
 	}
 	
-	// °Ô½Ã¹° Á¶È¸
+	// ê²Œì‹œë¬¼ ì¡°íšŒ
 	@RequestMapping(value="/view", method= {RequestMethod.GET, RequestMethod.POST})
 	public void getView(@RequestParam("bno") int bno, Model model) throws Exception{
 		BoardVO vo = service.view(bno);
 		model.addAttribute("view", vo);
 	}
 	
-	// °Ô½Ã¹° ¼öÁ¤
+	// ê²Œì‹œë¬¼ ìˆ˜ì •
 	@RequestMapping(value="/modify", method=RequestMethod.GET)
 	public void getModify(@RequestParam("bno") int bno, Model model) throws Exception{
 		BoardVO vo = service.view(bno);
 		model.addAttribute("view", vo);
 	}
 	
-	// °Ô½Ã¹° ¼öÁ¤
+	// ê²Œì‹œë¬¼ ìˆ˜ì •
 	@RequestMapping(value="/modify", method=RequestMethod.POST)
 	public String postModify(BoardVO vo) throws Exception{
 		service.modify(vo);
 		return "redirect:/board/view?bno=" + vo.getBno();
 	}
 	
-	// °Ô½Ã¹° »èÁ¦
+	// ê²Œì‹œë¬¼ ì‚­ì œ
 	@RequestMapping(value="/delete", method=RequestMethod.GET)
 	public String getDelete(@RequestParam("bno") int bno) throws Exception{
 		service.delete(bno);
 		return "redirect:/board/list";
 	}
 	
-	// °Ô½Ã¹° ¸ñ·Ï + ÆäÀÌÂ¡ Ãß°¡
+	// ê²Œì‹œë¬¼ ëª©ë¡ + í˜ì´ì§•
 	@RequestMapping(value="/listpage", method=RequestMethod.GET)
 	public void getListPage(Model model) throws Exception{
 		List list = null;
@@ -90,33 +90,33 @@ public class BoardController {
 		model.addAttribute("list", list);
 	}
 	
-	// °Ô½Ã¹° ¸ñ·Ï + ÆäÀÌÂ¡ Ãß°¡
+	// ê²Œì‹œë¬¼ ëª©ë¡ + í˜ì´ì§• ì¶”ê°€
 	@RequestMapping(value="/listPage", method=RequestMethod.GET)
 	public void getListPage(Model model, @RequestParam("num") int num) throws Exception{
-		// °Ô½Ã¹° ÃÑ °¹¼ö
+		// ê²Œì‹œë¬¼ ì´ ê°¯ìˆ˜
 /*		int count = service.count();
 		
-		// ÇÑ ÆäÀÌÁö¿¡ Ãâ·ÂÇÒ °Ô½Ã¹° °¹¼ö
+		// í•œ í˜ì´ì§€ì— ì¶œë ¥í•  ê²Œì‹œë¬¼ ê°¯ìˆ˜
 		int postNum = 5;
 		
-		// ÇÏ´Ü ÆäÀÌÂ¡ ¹øÈ£ ([°Ô½Ã¹° ÃÑ °¹¼ö / ÇÑ ÆäÀÌÁö¿¡ Ãâ·ÂÇÒ °¹¼ö ] ÀÇ ¿Ã¸²)
+		// í•˜ë‹¨ í˜ì´ì§• ë²ˆí˜¸ ([ ê²Œì‹œë¬¼ ì´ ê°¯ìˆ˜ + í•œ í˜ì´ì§€ì— ì¶œë ¥í•  ê°¯ìˆ˜ ] ì˜ ì˜¬ë¦¼)
 		int pageNum = (int)Math.ceil((double)count/postNum);
 		
-		// Ãâ·ÂÇÒ °Ô½Ã¹°
+		// ì¶œë ¥í•  ê²Œì‹œë¬¼
 		int displayPost = (num - 1) * postNum;
 		
 		
 		
-		// ÇÑ¹ø¿¡ Ç¥½ÃÇÒ ÆäÀÌÂ¡ ¹øÈ£ÀÇ °¹¼ö
+		// í•œë²ˆì— í‘œì‹œí•  í˜ì´ì§• ë²ˆí˜¸ì˜ ê°¯ìˆ˜
 		int pageNum_cnt = 5;
 		
-		// Ç¥½ÃµÇ´Â ÆäÀÌÁö ¹øÈ£ Áß ¸¶Áö¸· ¹øÈ£
+		// í‘œì‹œë˜ëŠ” í˜ì´ì§€ ë²ˆí˜¸ ì¤‘ ë§ˆì§€ë§‰ ë²ˆí˜¸
 		int endPageNum = (int)(Math.ceil((double)num / (double)pageNum_cnt) * pageNum_cnt);
 		
-		// Ç¥½ÃµÇ´Â ÆäÀÌÁö ¹øÈ£ Áß Ã¹¹øÂ° ¹øÈ£
+		// í‘œì‹œë˜ëŠ” í˜ì´ì§€ ë²ˆí˜¸ ì¤‘ ì²«ë²ˆì§¸ ë²ˆí˜¸
 		int startPageNum = endPageNum - (pageNum_cnt - 1);
 		
-		// ¸¶Áö¸· ¹øÈ£ Àç°è»ê
+		// ë§ˆì§€ë§‰ ë²ˆí˜¸ ì¬ê³„ì‚°
 		int endPageNum_tmp = (int)(Math.ceil((double)count / (double)pageNum_cnt));
 		
 		if(endPageNum > endPageNum_tmp) {
@@ -131,15 +131,15 @@ public class BoardController {
 		model.addAttribute("list", list);
 		model.addAttribute("pageNum", pageNum);
 		
-		// ½ÃÀÛ ¹× ³¡ ¹øÈ£
+		// ì‹œì‘ ë° ë ë²ˆí˜¸
 		model.addAttribute("startPageNum", startPageNum);
 		model.addAttribute("endPageNum", endPageNum);
 		
-		// ÀÌÀü ¹× ´ÙÀ½
+		// ì´ì „ ë° ë‹¤ìŒ
 		model.addAttribute("prev", prev);
 		model.addAttribute("next", next);
 		
-		// ÇöÀç ÆäÀÌÁö
+		// í˜„ì¬ í˜ì´ì§€
 		model.addAttribute("select", num); */
 		
 		
@@ -164,7 +164,7 @@ public class BoardController {
 		model.addAttribute("select", num);
 	}
 	
-	// °Ô½Ã¹° ¸ñ·Ï + ÆäÀÌÂ¡ Ãß°¡ + °Ë»ö
+	// ê²Œì‹œë¬¼ ëª©ë¡ + í˜ì´ì§• ì¶”ê°€ + ê²€ìƒ‰
 	@RequestMapping(value="/listPageSearch", method=RequestMethod.GET)
 	public void getListPageSearch(Model model, @RequestParam("num") int num,
 			@RequestParam(value="searvhType", required=false, defaultValue="title") String searchType,
@@ -173,10 +173,10 @@ public class BoardController {
 		Page page = new Page();
 		
 		page.setNum(num);
-//		page.setCount(service.count()); // ÆäÀÌÂ¡À» ¸¸µé¶§ °Ô½Ã¹°ÀÇ °¹¼ö¸¦ ±¸ÇÏ´Â ¸Ş¼­µå
+//		page.setCount(service.count()); // í˜ì´ì§•ì„ ë§Œë“¤ë•Œ ê²Œì‹œë¬¼ì˜ ê°¯ìˆ˜ë¥¼ êµ¬í•˜ëŠ” ë©”ì„œë“œ
 		page.setCount(service.searchCount(searchType, keyword));
 		
-		// °Ë»ö Å¸ÀÔ°ú °Ë»ö¾î
+		// ï¿½Ë»ï¿½ Å¸ï¿½Ô°ï¿½ ï¿½Ë»ï¿½ï¿½ï¿½
 //		page.setSearchTypeKeyword(searchType, keyword);
 		page.setSearchType(searchType);
 		page.setKeyword(keyword);

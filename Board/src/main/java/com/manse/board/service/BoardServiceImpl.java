@@ -16,58 +16,58 @@ public class BoardServiceImpl implements BoardService {
 	@Inject
 	private BoardDAO dao;
 
-	// °Ô½Ã¹° ¸ñ·Ï
+	// ê²Œì‹œë¬¼ ëª©ë¡
 	public List list() throws Exception {
 		
 		return dao.list();
 	}
 	
-	// °Ô½Ã¹° ÀÛ¼º
+	// ê²Œì‹œë¬¼ ì‘ì„±
 	@Override
 	public void write(BoardVO vo) throws Exception {
 		// TODO Auto-generated method stub
 		dao.write(vo);
 	}
 
-	// °Ô½Ã¹° Á¶È¸
+	// ê²Œì‹œë¬¼ ì¡°íšŒ
 	@Override
 	public BoardVO view(int bno) throws Exception {
 		dao.updateReviewCnt(bno);
 		return dao.view(bno);
 	}
 
-	// °Ô½Ã¹° ¼öÁ¤
+	// ê²Œì‹œë¬¼ ìˆ˜ì •
 	@Override
 	public void modify(BoardVO vo) throws Exception {
 		dao.modify(vo);
 	}
 
-	// °Ô½Ã¹° »èÁ¦
+	// ê²Œì‹œë¬¼ ì‚­ì œ
 	@Override
 	public void delete(int bno) throws Exception {
 		dao.delete(bno);
 	}
 
-	// °Ô½Ã¹° ÃÑ °¹¼ö
+	// ê²Œì‹œë¬¼ ì´ ê°¯ìˆ˜
 	@Override
 	public int count() throws Exception {
 		return dao.count();
 	}
 
-	// °Ô½Ã¹° ¸ñ·Ï + ÆäÀÌÂ¡
+	// ê²Œì‹œë¬¼ ëª©ë¡ + í˜ì´ì§•
 	@Override
 	public List listPage(int displayPost, int postNum) throws Exception {
 		return dao.listPage(displayPost, postNum);
 	}
 
-	// °Ô½Ã¹° ¸ñ·Ï + ÆäÀÌÂ¡ + °Ë»ö
+	// ê²Œì‹œë¬¼ ëª©ë¡ + í˜ì´ì§• + ê²€ìƒ‰
 	@Override
 	public List<BoardVO> listPageSearch(int displayPost, int postNum, String searchType, String keyword)
 			throws Exception {
 		return dao.listPageSearch(displayPost, postNum, searchType, keyword);
 	}
 
-	// °Ô½Ã¹° ÃÑ °¹¼ö
+	// ê²Œì‹œë¬¼ ì´ ê°¯ìˆ˜
 	@Override
 	public int searchCount(String searchType, String keyword) throws Exception {
 		return dao.searchCount(searchType, keyword);

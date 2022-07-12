@@ -1,31 +1,31 @@
 package com.manse.board.domain;
 
 public class Page {
-	// ÇöÀç ÆäÀÌÁö ¹øÈ£
+	// í˜„ìž¬ íŽ˜ì´ì§€ ë²ˆí˜¸
 	private int num;
 	
-	// °Ô½Ã¹° ÃÑ °¹¼ö
+	// ê²Œì‹œë¬¼ ì´ ê°¯ìˆ˜
 	private int count;
 	
-	// ÇÑ ÆäÀÌÁö¿¡ Ãâ·ÂÇÒ °Ô½Ã¹° °¹¼ö
+	// í•œ íŽ˜ì´ì§€ì— ì¶œë ¥í•  ê²Œì‹œë¬¼ ê°¯ìˆ˜
 	private int postNum = 5;
 	
-	// ÇÏ´Ü ÆäÀÌÂ¡ ¹øÈ£ ([°Ô½Ã¹° ÃÑ °¹¼ö / ÇÑ ÆäÀÌÁö¿¡ Ãâ·ÂÇÒ °¹¼ö] ÀÇ ¿Ã¸²)
+	// í•˜ë‹¨ íŽ˜ì´ì§• ë²ˆí˜¸ ([ ê²Œì‹œë¬¼ ì´ ê°¯ìˆ˜ + í•œ íŽ˜ì´ì§€ì— ì¶œë ¥í•  ê°¯ìˆ˜ ] ì˜ ì˜¬ë¦¼)
 	private int pageNum;
 	
-	// Ãâ·ÂÇÒ °Ô½Ã¹°
+	// ì¶œë ¥í•  ê²Œì‹œë¬¼
 	private int displayPost;
 	
-	// ÇÑ¹ø¿¡ Ç¥½ÃÇÒ ÆäÀÌÂ¡ ¹øÈ£ÀÇ °¹¼ö
+	// í•œë²ˆì— í‘œì‹œí•  íŽ˜ì´ì§„ ë²ˆí˜¸ì˜ ê°¯ìˆ˜
 	private int pageNumCnt = 5;
 	
-	// Ç¥½ÃµÇ´Â ÆäÀÌÂ¡ ¹øÈ£ Áß ¸¶Áö¸· ¹øÈ£
+	// í‘œì‹œë˜ëŠ” íŽ˜ì´ì§€ ë²ˆí˜¸ ì¤‘ ë§ˆì§€ë§‰ ë²ˆí˜¸
 	private int endPageNum;
 	
-	// Ç¥½ÃµÇ´Â ÆäÀÌÁö ¹øÈ£ Áß Ã¹¹øÂ° ¹øÈ£
+	// í‘œì‹œë˜ëŠ” íŽ˜ì´ì§€ ë²ˆí˜¸ ì¤‘ ì²«ë²ˆì§¸ ë²ˆí˜¸
 	private int startPageNum;
 	
-	// ´ÙÀ½/ÀÌÀü Ç¥½Ã ¿©ºÎ
+	// ë‹¤ìŒ/ì´ì „ í‘œì‹œ ì—¬ë¶€
 	private boolean prev;
 	private boolean next;
 	
@@ -94,13 +94,13 @@ public class Page {
 	}
 	
 	private void dataCalc() {
-		// ¸¶Áö¸· ¹øÈ£
+		// ë§ˆì§€ë§‰ ë²ˆí˜¸
 		endPageNum = (int)(Math.ceil((double)num / (double)pageNumCnt) * pageNumCnt);
 		
-		// ½ÃÀÛ ¹øÈ£
+		// ì‹œìž‘ ë²ˆí˜¸
 		startPageNum = endPageNum - (pageNumCnt -1);
 		
-		// ¸¶Áö¸· ¹øÈ£ Àç°è»ê
+		// ë§ˆì§€ë§‰ ë²ˆí˜¸ ìž¬ê³„ì‚°
 		int endPageNum_tmp = (int)(Math.ceil((double)count / (double)pageNumCnt));
 		
 		if(endPageNum > endPageNum_tmp) {
@@ -113,7 +113,7 @@ public class Page {
 		displayPost = (num - 1) * postNum;
 	}
 	
-	// °Ë»ö Å¸ÀÔ°ú °Ë»ö¾î
+	// ê²€ìƒ‰ íƒ€ìž…ê³¼ ê²€ìƒ‰ì–´
 /*	private String searchTypeKeyword;
 	
 	public void serSearchTypeKeyword(String searchType, String keyword) {

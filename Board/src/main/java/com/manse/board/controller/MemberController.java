@@ -23,13 +23,13 @@ public class MemberController {
 	@Inject
 	private MemberService service;
 	
-	// È¸¿ø°¡ÀÔ get
+	// íšŒì›ê°€ì… get
 	@RequestMapping(value="/register", method=RequestMethod.GET)
 	public void getRegister() throws Exception{
 		logger.info("get register");
 	}
 	
-	// È¸¿ø°¡ÀÔ post
+	// íšŒì›ê°€ì… post
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public String postRegister(MemberVO vo) throws Exception{
 		logger.info("post register");
@@ -41,8 +41,8 @@ public class MemberController {
 			} else if(result == 0) {
 				service.register(vo);
 			}
-			// ÀÔ·ÂµÈ ¾ÆÀÌµğ°¡ Á¸ÀçÇÑ´Ù¸é -> ´Ù½Ã È¸¿ø°¡ÀÔ ÆäÀÌÁö·Î µ¹¾Æ°¡±â
-			// Á¸ÀçÇÏÁö ¾Ê´Â´Ù¸é -> register
+			// ì…ë ¥ëœ ì•„ì´ë””ê°€ ì¡´ì¬í•œë‹¤ë©´ -> ë‹¤ì‹œ íšŒì›ê°€ì… í˜ì´ì§€ë¡œ ëŒì•„ê°€ê¸°
+			// ì¡´ì¬í•˜ì§€ ì•ŠëŠ”ë‹¤ë©´ -> register
 		} catch(Exception e) {
 			throw new RuntimeException();
 		}
@@ -50,11 +50,11 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	// ·Î±×ÀÎ post
+	// ë¡œê·¸ì¸ post
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
-		// session : À¥ºê·¯¿ìÀú¿Í À¥¼­¹ö¸¦ ¿¬°á»óÅÂ¸¦ ÀÇ¹Ì
-		// httpSession : Å¬¶óÀÌ¾ğÆ®ÀÇ À¥ºê¶ó¿ìÀú¿Í À¥¼­¹öÀÇ ¿¬°á »óÅÂ¸¦ °ü¸®ÇÏ´Â °´Ã¼
+		// session : ì›¹ë¸Œë¼ìš°ì €ì™€ ì›¹ì„œë²„ë¥¼ ì—°ê²°ì—°ê²°ìƒíƒœë¥¼ ì˜ë¯¸
+		// httpSession : í´ë¼ì´ì–¸íŠ¸ì˜ ì›¹ì¦ˆë¼ìš°ì €ì™€ ì›¹ì„œë²„ì˜ ì—°ê²° ìƒíƒœë¥¼ ê´€ë¦¬í•˜ëŠ” ê°ì²´
 		
 		logger.info("post login");
 		
@@ -70,7 +70,7 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	// ·Î±×¾Æ¿ô
+	// ë¡œê·¸ì•„ì›ƒ
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception{
 		session.invalidate();
@@ -78,13 +78,13 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	// È¸¿øÁ¤º¸ ¼öÁ¤
+	// íšŒì›ì •ë³´ ìˆ˜ì •
 	@RequestMapping(value="/memberUpdateView", method=RequestMethod.GET)
 	public String registerUpdateView() throws Exception{
 		return "member/memberUpdateView";
 	}
 	
-	// È¸¿øÁ¤º¸ ¼öÁ¤
+	// íšŒì›ì •ë³´ ìˆ˜ì •
 	@RequestMapping(value="/memberUpdate", method=RequestMethod.POST)
 	public String registerUpdate(MemberVO vo, HttpSession session) throws Exception{
 		service.memberUpdate(vo);
@@ -93,22 +93,22 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	// È¸¿ø Å»Åğ get
+	// íšŒì› íƒˆí‡´ get
 	@RequestMapping(value="/memberDeleteView", method=RequestMethod.GET)
 	public String memberDeleteView() throws Exception{
 		return "member/memberDeleteView";
 	}
 	
-	// È¸¿ø Å»Åğ post
+	// íšŒì› íƒˆí‡´ post
 	@RequestMapping(value="/memberDelete", method=RequestMethod.POST)
 	public String memberDelete(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception{
-		// ¼¼¼Ç¿¡ ÀÖ´Â member¸¦ °¡Á®¿Í memberº¯¼ö¿¡ ³Ö¾îÁØ´Ù
+		// ì„¸ì…˜ì— ìˆëŠ” memberë¥¼ ê°€ì ¸ì™€ memberë³€ìˆ˜ì— ë„£ì–´ì¤€ë‹¤
 		MemberVO member = (MemberVO) session.getAttribute("member");
 		
-		// ¼¼¼Ç¿¡ ÀÖ´Â ºñ¹Ğ¹øÈ£
+		// ì„¸ì…˜ì— ìˆëŠ” ë¹„ë°€ë²ˆí˜¸
 		String sessionPw = member.getUserPw();
 		
-		// vo·Î µé¾î¿À´Â ºñ¹Ğ¹øÈ£
+		// voë¡œ ë“¤ì–´ì˜¤ëŠ” ë¹„ë°€ë²ˆí˜¸
 		String voPw = vo.getUserPw();
 		
 		if(!(sessionPw.equals(voPw))) {
@@ -122,7 +122,7 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	// ÆĞ½º¿öµå Ã¼Å©
+	// íŒ¨ìŠ¤ì›Œë“œ ì²´í¬
 	@ResponseBody
 	@RequestMapping(value="/passChk", method=RequestMethod.POST)
 	public int passChk(MemberVO vo) throws Exception{
@@ -130,7 +130,7 @@ public class MemberController {
 		return result;
 	}
 	
-	// ¾ÆÀÌµğ Áßº¹ Ã¼Å©
+	// ì•„ì´ë”” ì¤‘ë³µ ì²´í¬
 	@ResponseBody
 	@RequestMapping(value="/idChk", method=RequestMethod.POST)
 	public int idChk(MemberVO vo) throws Exception{
