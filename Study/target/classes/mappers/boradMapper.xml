@@ -10,4 +10,10 @@
 		values(#{title}, #{content}, #{writer})
 	</insert>
 
+	<!-- 게시물 목록 조회 -->
+	<select id="list" resultType="kr.co.vo.BoardVO">
+		select bno, title, writer, regdate
+		from board.mp_board
+		where bno = #{bno}
+	</select>
 </mapper>
