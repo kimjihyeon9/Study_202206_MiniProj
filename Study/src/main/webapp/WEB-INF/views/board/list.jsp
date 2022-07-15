@@ -27,7 +27,7 @@
 					<table width="1200px">
 						<tr>
 							<th width="50px">번호</th>
-							<th width="850px">제목</th>
+							<th width="550px">제목</th>
 							<th width="100px">작성자</th>
 							<th width="200px">등록일</th>
 						</tr>
@@ -44,10 +44,10 @@
 							<c:otherwise>
 								<c:forEach items="${list}" var = "list">
 									<tr>
-										<td><c:out value="${list.bno}" /></td>
+										<td align="center"><c:out value="${list.bno}" /></td>
 										<td><c:out value="${list.title}" /></td>
-										<td><c:out value="${list.writer}" /></td>
-										<td><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd"/></td>
+										<td align="center"><c:out value="${list.writer}" /></td>
+										<td align="center"><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd"/></td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>

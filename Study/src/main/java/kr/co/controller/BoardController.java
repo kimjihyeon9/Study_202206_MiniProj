@@ -1,5 +1,7 @@
 package kr.co.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -19,7 +21,7 @@ public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
 	@Inject
-	BoardService service;
+	private BoardService service;
 	
 	// 게시판 글 작성 화면
 	@RequestMapping(value="/board/writeView", method=RequestMethod.GET)
@@ -42,8 +44,15 @@ public class BoardController {
 	public String list(Model model) throws Exception{
 		logger.info("list");
 		
-		model.addAttribute("list",service.list());
+//		model.addAttribute("list", service.list());
 		
+		List list = null;
+		list = service.list();
+		
+		List<BoardVO> addlist = null;
+		addlist = service.list();
+		
+		model.addAttribute("list", addlist);
 		return "board/list";
 	}
 }
